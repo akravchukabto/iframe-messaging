@@ -1,20 +1,24 @@
 window.onmessage = function(e) {
-  alert('iframe window.onmessage data: '+ JSON.stringify(e.data));
+  alert('parent window.onmessage data: '+ JSON.stringify(e.data));
 };
 
+let iframe;
+
 document.addEventListener("DOMContentLoaded", () => {
-  console.log("DOMContentLoaded");
+  console.log("parent DOMContentLoaded");
 
   document.getElementById("sendIframeEventBtn").addEventListener("click", (e) => {
     let eventData = document.getElementById('eventData').value;
     console.log('sendIframeEventBtn', eventData);
     window.top.postMessage(eventData, '*');
+
+    iframe?.contentWindow.postMessage('msg from parent: ' + eventData, '*');
   });
 
-  document.getElementById("openIframeBtn") && document.getElementById("openIframeBtn").addEventListener("click", (e) => {
+  document.getElementById("openIframeBtn").addEventListener("click", (e) => {
     console.log('openIframeBtn');
-    let iframe = document.createElement('iframe');
-    iframe.src = 'https://akravchukabto.github.io/iframe-messaging/iframe.html';
+    iframe = document.createElement('iframe');
+    iframe.src = 'https://akravchukabto.github.io/iframe-messaging/';
     document.body.appendChild(iframe);
   });
 
