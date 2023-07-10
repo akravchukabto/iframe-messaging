@@ -11,4 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.top.postMessage(eventData, '*');
   });
 
+  document.getElementById("openIframeBtn").addEventListener("click", (e) => {
+    console.log('openIframeBtn');
+    let iframe = document.createElement('iframe');
+    iframe.src = 'https://akravchukabto.github.io/iframe-messaging/';
+    document.body.appendChild(iframe);
+  });
+
 });
