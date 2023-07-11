@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("openIframeBtn").addEventListener("click", (e) => {
     console.log('openIframeBtn');
     iframe = document.createElement('iframe');
-    iframe.src = 'https://akravchukabto.github.io/iframe-messaging/';
+    iframe.src = 'https://akravchukabto.github.io/iframe-messaging/iframe.html';
     document.body.appendChild(iframe);
   });
 
